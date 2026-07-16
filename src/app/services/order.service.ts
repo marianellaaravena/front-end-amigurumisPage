@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class OrderService {
   private http = inject(HttpClient);
-private apiUrl = 'https://back-end-amigurumipage-1.onrender.com/categories/orders';
+private apiUrl = 'https://back-end-amigurumipage-1.onrender.com/orders';
   // 1. Guarda el pedido en MySQL (Se usa en CheckoutResumen)
   createOrder(pedido: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, pedido);
