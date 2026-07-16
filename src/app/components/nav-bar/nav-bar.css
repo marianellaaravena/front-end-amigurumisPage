@@ -1,0 +1,114 @@
+/* =========================================
+   MOBILE FIRST (Celulares)
+   ========================================= */
+.navbar {
+  background-color: #e58fc1;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem 5%;
+}
+
+.nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger-btn {
+  background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #333;
+}
+
+.logo { display: flex; align-items: center; gap: 8px; }
+.logo img { height: 40px; }
+.logo-text h1 { font-size: 1.1rem; color: #333; margin: 0; line-height: 1; }
+.logo-text span { font-size: 0.8rem; color: #666; }
+
+.nav-actions { display: flex; gap: 10px; }
+.icon-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+
+/* Menú oculto por defecto en móvil */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* Clase que se activa al tocar la hamburguesa */
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links a {
+  text-decoration: none; color: #555; font-weight: 600; text-align: center;
+}
+.nav-links a.active { color: #000; font-weight: bold; }
+
+.desktop-only { display: none; }
+.mobile-only { display: block; }
+
+/* =========================================
+   PANTALLAS MEDIANAS Y GRANDES (Tablets y PC)
+   ========================================= */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-top { flex: 1; }
+  .hamburger-btn, .mobile-only { display: none; }
+  .desktop-only { display: flex; }
+  
+  .logo img { height: 50px; }
+  .logo-text h1 { font-size: 1.2rem; }
+  .logo-text span { font-size: 0.9rem; }
+
+  /* Menú visible siempre y en fila */
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    gap: 20px;
+  }
+
+  .nav-links a.active, .nav-links a:hover {
+    border-bottom: 3px solid #000;
+    padding-bottom: 5px;
+  }
+
+  .search-box { position: relative; align-items: center; }
+  .search-box input {
+    padding: 8px 35px 8px 15px; border: 1px solid #ddd;
+    border-radius: 20px; background-color: #f9f9f9; outline: none;
+  }
+  .search-icon { position: absolute; right: 12px; color: #888; cursor: pointer; }
+}
+/* Estilo para que el contenedor del icono permita posicionar la burbuja */
+.cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+/* El círculo rojo (burbuja) */
+.cart-counter {
+  position: absolute;
+  top: -5px;      /* Ajusta según el tamaño de tu icono */
+  right: -5px;    /* Ajusta según el tamaño de tu icono */
+  background-color: #d9534f; 
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+  min-width: 15px;
+  text-align: center;
+  pointer-events: none; /* Para que el clic pase por encima */
+}
+

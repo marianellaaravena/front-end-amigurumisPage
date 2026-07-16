@@ -1,0 +1,36 @@
+<div class="confirm-container">
+  <h2>✅ ¡PEDIDO CONFIRMADO!</h2>
+
+  <!-- Mensaje mientras se genera el pedido y el QR -->
+  <div class="loading" *ngIf="!qrData">
+    <p>Generando código QR...</p>
+  </div>
+
+  <!-- Se muestra solo cuando el QR ya está disponible -->
+  <div class="qr-box" *ngIf="qrData">
+    <img
+      [src]="qrData"
+      alt="Código QR del Pedido"
+      width="200"
+      height="200"
+    />
+
+    <p>Código de pedido: <strong>{{ nroOrden }}</strong></p>
+  </div>
+
+  <div class="summary-box">
+    <p>Total: ${{ total }}</p>
+<p>Modo: {{ getModoTexto(modo) }}</p>  </div>
+
+  <button class="action-btn" (click)="enviarWhatsApp()">
+    📱 Enviar por WhatsApp
+  </button>
+
+  <button class="action-btn" routerLink="/seguimiento">
+    🔔 Ver seguimiento
+  </button>
+
+  <button class="action-btn" routerLink="/">
+    🏠 Volver al inicio
+  </button>
+</div>

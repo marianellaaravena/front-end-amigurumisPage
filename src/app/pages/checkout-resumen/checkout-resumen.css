@@ -1,0 +1,97 @@
+/* =========================================
+   MOBILE FIRST (Celulares) - CSS INTEGRADO
+   ========================================= */
+.form-container {
+  padding: 1.5rem 5%;
+  background-color: #fbf6f0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  color: #555;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Cajas de resumen */
+.summary-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.summary-card h3 {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid #eee;
+  text-transform: uppercase;
+}
+
+/* Estilos de texto dentro de las tarjetas */
+.summary-card p {
+  margin: 5px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.summary-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.summary-card li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Botón Final */
+.next-btn {
+  width: 100%;
+  background: #008080; /* Tu color verde azulado */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.next-btn:hover {
+  background: #005a5a;
+}
+.confirm-btn {
+  width: 100%; background: #008080; color: white; border: none; padding: 15px;
+  border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; text-align: center; margin-top: 2rem;
+}

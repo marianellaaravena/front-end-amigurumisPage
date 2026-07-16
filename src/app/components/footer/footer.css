@@ -1,0 +1,124 @@
+/* ==========================================================================
+   📱 ESTILOS BASE: Diseñado para celulares (Mobile-First)
+   ========================================================================== */
+.footer {
+  background-color: #e58fc1; /* Tu rosa característico de identidad */
+  padding: 2rem 5% 1rem 5%;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* Apilados en celular */
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.footer-column h3 { 
+  color: #222; 
+  font-size: 1.15rem; 
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.footer-column p { 
+  color: #444; 
+  font-size: 0.95rem; 
+  line-height: 1.6;
+  margin: 6px 0;
+}
+
+/* Iconos de contacto (Bootstrap Icons) */
+.footer-column i {
+  margin-right: 8px;
+  color: #008080; /* Detalles en verde teal */
+}
+
+/* Redes Sociales */
+.footer-column.text-center {
+  text-align: center;
+}
+
+.social-icons { 
+  display: flex; 
+  gap: 20px; 
+  justify-content: center;
+  margin-top: 12px; 
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.6rem;
+  transition: transform 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #008080;
+  transform: scale(1.15); /* Efecto de rebote al pasar el mouse */
+}
+
+
+/* ==========================================================================
+   🗺️ ACTUALIZACIÓN DEL MAPA EN FOOTER.CSS
+   ========================================================================== */
+
+/* En celulares (Mobile First): se mantiene fluido */
+.footer-map-row {
+  margin: 1.5rem auto 0 auto;
+  width: 100%;
+  max-width: 100%; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Forzamos al iframe interno a responder al contenedor */
+.footer-map-row iframe {
+  display: block;
+  width: 100%;
+  height: 200px; /* Un poco más bajo en celulares para que no tape todo */
+}
+
+/* 💻 CUANDO PASA A COMPUTADORA: Lo achicamos y centramos */
+@media (min-width: 768px) {
+  .footer-map-row {
+    max-width: 600px; /* 💡 Ancho ideal acotado para PC */
+    margin: 2rem auto 0 auto; /* Lo centra horizontalmente */
+  }
+
+  .footer-map-row iframe {
+    height: 100px; /* 💡 Altura más sutil y estilizada */
+  }
+}
+
+/* ==========================================================================
+   💻 RESPONSIVE: Adaptación para Tablets y Computadoras
+   ========================================================================== */
+@media (min-width: 768px) {
+  .footer {
+    padding: 3rem 8% 1rem 8%;
+  }
+
+  .footer-container {
+    flex-direction: row; /* Fila horizontal en PC */
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-column { 
+    flex: 1; 
+    padding: 0 1.5rem; 
+  }
+
+  .social-icons {
+    justify-content: center; /* Mantiene centrado en su sección */
+  }
+
+  .footer-map-row {
+    max-width: 1200px;
+    margin: 2.5rem auto 0 auto; /* Centrado estético en pantallas anchas */
+  }
+}

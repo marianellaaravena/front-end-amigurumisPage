@@ -1,0 +1,51 @@
+<div class="category-page">
+
+  <section class="categories-grid">
+    
+    <div 
+      class="category-item" 
+      [class.active]="selectedCategory === 0"
+      (click)="selectedCategory = 0; applyFilters()"
+    >
+      <div class="icon-circle" style="background: #e2e2e2;">
+        <span class="emoji-icon">🖼️</span>
+      </div>
+      <h3>TODAS</h3>
+    </div>
+
+    <div 
+      *ngFor="let cat of categorias" 
+      class="category-item"
+      [class.active]="selectedCategory === cat.id"
+      (click)="seleccionarCategoria(cat.id)"
+    >
+      <div class="icon-circle" [style.background]="cat.color">
+        <span class="emoji-icon">{{ cat.icon }}</span>
+      </div>
+      <h3>{{ cat.name }}</h3>
+    </div>
+
+  </section>
+
+  <section class="search-container-center">
+    <div class="search-wrapper">
+      <input 
+        type="text" 
+        placeholder="Buscar por nombre o detalle..." 
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="buscarPorTexto()" 
+      >
+      <button class="btn-search-icon" (click)="buscarPorTexto()"></button>
+    </div>
+  </section>
+
+  <div class="products-grid" *ngIf="filteredProducts.length > 0">
+    <app-product-card *ngFor="let prod of filteredProducts" [product]="prod">
+    </app-product-card>
+  </div>
+
+  <div *ngIf="filteredProducts.length === 0" class="no-results">
+    <p>No encontramos amigurumis con esos criterios. 🧶</p>
+  </div>
+
+</div>

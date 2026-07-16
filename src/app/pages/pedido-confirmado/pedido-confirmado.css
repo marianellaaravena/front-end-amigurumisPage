@@ -1,0 +1,116 @@
+/* ==========================================================================
+   📱 ESTILOS BASE: Diseñado para celulares (Mobile-First)
+   ========================================================================== */
+
+/* Contenedor principal adaptable */
+.confirm-container {
+  width: 92%;              /* Toma casi todo el ancho de la pantalla del celular */
+  max-width: 100%;         /* En celular fluye libremente */
+  margin: 1rem auto;       /* Margen superior e inferior más pequeño en celular */
+  padding: 16px;           /* Un padding un poco más compacto en pantallas chicas */
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fbf6f0;
+  border-radius: 15px;
+  box-sizing: border-box;  /* Evita que los padding rompan el ancho de pantalla */
+}
+
+h2 {
+  color: #008080;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;       /* Tamaño cómodo para leer en celular */
+}
+
+/* Tarjeta del QR */
+.qr-box {
+  background: white;
+  padding: 15px;           /* Ajustado para pantallas táctiles */
+  border-radius: 12px;
+  border: 2px dashed #ddd;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Forzamos a que la imagen del QR nunca desborde el contenedor del celular */
+.qr-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.qr-box p {
+  margin: 8px 0 0 0;
+  font-size: 0.85rem;
+  color: #555;
+  word-break: break-word;   /* Evita que un código largo rompa el diseño del celular */
+}
+
+/* Tarjeta de resumen */
+.summary-box {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.summary-box p {
+  margin: 8px 0;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Botones de acción */
+.action-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;     /* Un pelín más de espacio entre botones para dedos en celular */
+  border: none;
+  border-radius: 8px;
+  background: #008080;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;         /* Botón grande y fácil de presionar */
+  cursor: pointer;
+  transition: background 0.3s;
+  box-sizing: border-box;
+}
+
+.action-btn:hover {
+  background: #005a5a;
+}
+
+/* Estilo especial para volver al inicio */
+.action-btn:last-child {
+  background: transparent;
+  color: #555;
+  border: 1px solid #ccc;
+}
+
+.action-btn:last-child:hover {
+  background: #f0f0f0;
+}
+
+/* ==========================================================================
+   💻 RESPONSIVE: Adaptación para Tablets y Computadoras
+   ========================================================================== */
+@media (min-width: 768px) {
+  .confirm-container {
+    max-width: 500px;      /* Recupera el límite que tenías */
+    margin: 3rem auto;     /* Más espacio arriba y abajo en pantallas grandes */
+    padding: 24px;         /* Padding más amplio y cómodo */
+  }
+
+  h2 {
+    font-size: 1.8rem;     /* El título crece un poco en PC */
+  }
+
+  .qr-box {
+    padding: 20px;
+  }
+}

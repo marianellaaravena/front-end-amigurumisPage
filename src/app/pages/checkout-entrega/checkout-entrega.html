@@ -1,0 +1,71 @@
+<div class="delivery-container">
+
+  <header class="delivery-header">
+    <a routerLink="/checkout-datos" class="back-link">← Volver</a>
+    <span class="step-indicator">Paso 2 de 2</span>
+  </header>
+
+  <h2 class="delivery-title">🚚 MODO DE ENTREGA</h2>
+
+  <form>
+    <!-- Opción 1: Envío a Domicilio -->
+    <div class="option-card" [class.selected]="modoEntrega === 'delivery'">
+      <label>
+        <input type="radio" name="entrega" value="delivery" [(ngModel)]="modoEntrega">
+        <div class="option-text">
+          <strong>🏠 A domicilio</strong>
+          <span>(Envío con costo adicional)</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Opción 2: Retiro en Local -->
+    <div class="option-card" [class.selected]="modoEntrega === 'take_away'">
+      <label>
+        <input type="radio" name="entrega" value="take_away" [(ngModel)]="modoEntrega">
+        <div class="option-text">
+          <strong>🛍️ Para retirar en el local</strong>
+          <span>(Gratis)</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Opción 3: Punto de Encuentro (Mapeado a dine_in para el backend) -->
+    <div class="option-card" [class.selected]="modoEntrega === 'dine_in'">
+      <label>
+        <input type="radio" name="entrega" value="dine_in" [(ngModel)]="modoEntrega">
+        <div class="option-text">
+          <strong>📍 Acordar con el vendedor</strong>
+          <span>(Punto de encuentro)</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Despliegue dinámico de Dirección para Domicilio -->
+    <div class="input-card" *ngIf="modoEntrega === 'delivery'">
+      <label for="direccion">Dirección de Envío</label>
+      <input type="text" id="direccion" name="direccion" [(ngModel)]="direccion" placeholder="Calle 25 de mayo 123">
+    </div>
+
+    <!-- Despliegue dinámico de Dirección para Punto de Encuentro -->
+    <div class="input-card" *ngIf="modoEntrega === 'dine_in'">
+      <label for="puntoEncuentro">Punto de Encuentro Acordado</label>
+      <input type="text" id="puntoEncuentro" name="direccion" [(ngModel)]="direccion" placeholder="Plaza central / Estación de tren">
+    </div>
+
+    <!-- Campo permanente de Observaciones -->
+    <div class="input-card">
+      <label for="observaciones">Observaciones</label>
+      <input type="text" id="observaciones" name="observaciones" [(ngModel)]="observaciones"
+        placeholder="Envuelto para regalo por favor">
+    </div>
+
+<button 
+  type="button" 
+  class="confirm-btn" 
+  [disabled]="modoEntrega !== 'take_away' && !direccion.trim()"
+  (click)="guardarYContinuar()">
+  ✅ CONFIRMAR PEDIDO
+</button>  </form>
+
+</div>

@@ -1,0 +1,105 @@
+.category-page {
+  max-width: 1400px; /* Un poco más ancho para que entren las 9 en fila */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* CONTENEDOR DE FILTROS: Se adapta a una sola línea y envuelve en dispositivos chicos */
+.categories-grid {
+  display: flex;
+  justify-content: center; /* Centra los círculos perfectamente */
+  align-items: flex-start;
+  flex-wrap: wrap; /* Clave: si la pantalla se achica, los iconos bajan prolijamente */
+  gap: 25px; /* Espaciado regular entre círculos */
+  padding: 20px 10px;
+}
+
+.category-item { 
+  text-align: center; 
+  cursor: pointer; 
+  transition: transform 0.2s ease;
+}
+
+/* El círculo con las medidas exactas de tu captura de pantalla */
+.icon-circle {
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* El emoji gigante */
+.emoji-icon { 
+  font-size: 2.5rem; 
+}
+
+/* El texto de la categoría */
+.category-item h3 { 
+  font-size: 0.85rem; 
+  margin-top: 10px; 
+  color: #444; 
+  font-weight: bold;
+}
+
+/* Efecto hover e iluminación rosa al seleccionarse */
+.category-item:hover .icon-circle {
+  transform: scale(1.08);
+}
+
+.category-item.active .icon-circle {
+  border-color: #d63384;
+  transform: scale(1.08);
+  box-shadow: 0 6px 12px rgba(214, 51, 132, 0.25);
+}
+
+.category-item.active h3 {
+  color: #d63384;
+}
+
+/* BARRA DE BÚSQUEDA EN EL MEDIO Y CENTRADA */
+.search-container-center {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.search-wrapper {
+  width: 100%;
+  max-width: 550px;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 14px 24px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  transition: all 0.2s;
+}
+
+.search-wrapper input:focus {
+  border-color: #d63384;
+}
+
+/* GRILLA DE PRODUCTOS (Tu diseño original centrado) */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center; 
+  gap: 30px; 
+  margin-top: 20px;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 1.1rem;
+}

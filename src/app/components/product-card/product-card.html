@@ -1,0 +1,29 @@
+<div class="card-container">
+    <img [src]="'http://localhost:3000' + product.imageUrl" class="card-image" alt="{{product.name}}">
+    <div class="card-content">
+        <h3 class="card-title">{{product.name}}</h3>
+        <p class="card-price">${{product.price}}</p>
+<div class="product-card-actions">
+  
+  <button 
+    *ngIf="product.stock > 0" 
+    class="btn-agregar" 
+    (click)="addToCart()"
+  >
+    + Agregar al carrito
+  </button>
+
+  <button 
+    *ngIf="product.stock <= 0" 
+    class="btn-agotado" 
+    disabled
+  >
+    🚫 Agotado
+  </button>
+
+</div>
+        <div class="added-feedback" *ngIf="showFeedback">
+            +1🛒
+        </div>
+    </div>
+</div>

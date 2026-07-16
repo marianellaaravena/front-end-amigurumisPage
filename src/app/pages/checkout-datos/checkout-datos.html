@@ -1,0 +1,34 @@
+<div class="form-container">
+  
+  <header class="form-header">
+    <a routerLink="/carrito" class="back-link">← Volver</a>
+    <span class="step-indicator">Paso 1 de 2</span>
+  </header>
+
+  <h2 class="form-title">📋 TUS DATOS</h2>
+<form (ngSubmit)="procesarDatos(formulario)" #formulario="ngForm">
+    <div class="input-card">
+      <label for="apellido">Apellido *</label>
+      <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" required #apellidoInput="ngModel">
+    </div>
+ <div class="input-card">
+      <label for="nombre">Nombre *</label>
+      <input type="text" name="nombre" [(ngModel)]="nombre" required pattern="[A-Za-z ]+" #nombreInput="ngModel">
+      <small *ngIf="nombreInput.invalid && formulario.submitted" style="color:red;">Solo letras</small>
+    </div>
+
+    <div class="input-card">
+      <label for="telefono">Teléfono *</label>
+      <input type="tel" name="telefono" [(ngModel)]="telefono" required pattern="[0-9]{7,15}" #telInput="ngModel">
+      <small *ngIf="telInput.invalid && formulario.submitted" style="color:red;">Solo números (mínimo 7 dígitos)</small>
+    </div>
+
+    <div class="input-card">
+      <label for="email">Email *</label>
+      <input type="email" name="email" [(ngModel)]="email" required pattern=".+@gmail\.com" #emailInput="ngModel">
+      <small *ngIf="emailInput.invalid && formulario.submitted" style="color:red;">Debe ser un correo @gmail.com</small>
+    </div>
+
+    <button type="submit" class="next-btn">📦 SIGUIENTE</button>
+</form>
+</div>

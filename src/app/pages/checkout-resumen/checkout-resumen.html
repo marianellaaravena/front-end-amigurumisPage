@@ -1,0 +1,47 @@
+<div class="form-container">
+  <header class="form-header">
+    <a routerLink="/checkout-entrega" class="back-link">← Volver</a>
+  </header>
+
+  <h2 class="form-title">✅ RESUMEN DE COMPRA</h2>
+
+  <div class="summary-box">
+    <h3>TUS DATOS</h3>
+    <p><strong>Nombre:</strong> {{ datosUsuario.customerName }} {{ datosUsuario.customerLastName }}</p>
+    <p><strong>Contacto:</strong> {{ datosUsuario.customerPhone }}</p>
+    <p><strong>Email:</strong> {{ datosUsuario.customerEmail || '-' }}</p>
+  </div>
+
+  <div class="summary-card">
+    <h3>Detalle de Entrega</h3>
+    <p><strong>Método:</strong>
+      {{ datosUsuario.deliveryMode === 'delivery' ? 'Envío a domicilio' :
+      (datosUsuario.deliveryMode === 'dine_in' ? 'Punto de encuentro' : 'Retiro en local')
+      }}
+    </p>
+    <p *ngIf="datosUsuario.deliveryMode !== 'take_away' && datosUsuario.deliveryAddress">
+      <strong>Dirección:</strong> {{ datosUsuario.deliveryAddress }}
+    </p>
+    <p *ngIf="datosUsuario.notes">
+      <strong>Observaciones:</strong> {{ datosUsuario.notes }}
+    </p>
+  </div>
+
+  <div class="summary-card">
+    <h3>Tu Pedido</h3>
+    <ul>
+      <li *ngFor="let item of carritoItems">
+        <span>{{ item.name }} x{{ item.quantity }}</span>
+        <span>${{ item.price * item.quantity }}</span>
+      </li>
+    </ul>
+    <hr>
+    <p style="font-size: 1.2rem; font-weight: bold; text-align: right;">
+      TOTAL: ${{ totalPedido }}
+    </p>
+  </div>
+
+  <button type="button" class="confirm-btn" [disabled]="loading" (click)="confirmarYGuardarPedido()">
+    {{ loading ? 'Procesando pedido...' : '✅ CONFIRMAR Y PAGAR' }}
+  </button>
+</div>

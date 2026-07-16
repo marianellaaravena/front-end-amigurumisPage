@@ -1,0 +1,155 @@
+/* ==========================================================================
+   📱 ESTILOS BASE: Diseñado para celulares (Mobile-First)
+   ========================================================================== */
+.delivery-container {
+  padding: 1.5rem 5%; 
+  background-color: #fbf6f0; 
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box; /* Evita scrolls horizontales raros en celular */
+}
+
+.delivery-header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  padding-bottom: 1rem; 
+  border-bottom: 2px solid #ddd; 
+  margin-bottom: 1.5rem;
+}
+
+.back-link { 
+  color: #555; 
+  text-decoration: none; 
+  font-weight: 600; 
+}
+
+.step-indicator { 
+  color: #777; 
+  font-size: 0.95rem; 
+}
+
+.delivery-title { 
+  text-align: center; 
+  font-size: 1.5rem; 
+  color: #222; 
+  margin-bottom: 1.5rem; 
+}
+
+/* Tarjetas de opciones */
+.option-card {
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 10px;
+  padding: 15px; 
+  margin-bottom: 15px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+  box-sizing: border-box;
+}
+
+.option-card label { 
+  display: flex; 
+  align-items: center; 
+  gap: 15px; 
+  cursor: pointer; 
+  width: 100%; 
+}
+
+.option-card input[type="radio"] { 
+  transform: scale(1.3); 
+  accent-color: #008080; 
+}
+
+.option-text { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2px; 
+}
+
+.option-text strong { 
+  font-size: 1.05rem; 
+  color: #333; 
+}
+
+.option-text span { 
+  font-size: 0.85rem; 
+  color: #777; 
+}
+
+/* Tarjeta seleccionada */
+.option-card.selected { 
+  border-color: #008080; 
+  background-color: #f4fafb; 
+}
+
+/* Inputs de texto estilo maqueta */
+.input-card {
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 10px;
+  padding: 12px 15px; 
+  margin-top: 15px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.input-card label { 
+  font-size: 0.9rem; 
+  color: #666; 
+  font-weight: 600; 
+}
+
+.input-card input { 
+  border: none; 
+  outline: none; 
+  font-size: 1.1rem; 
+  color: #333; 
+  background: transparent; 
+  width: 100%; /* Aprovecha todo el ancho disponible */
+  box-sizing: border-box;
+}
+
+.confirm-btn {
+  width: 100%; 
+  background: #008080; 
+  color: white; 
+  border: none; 
+  padding: 15px;
+  border-radius: 8px; 
+  font-size: 1.2rem; 
+  font-weight: bold; 
+  cursor: pointer; 
+  text-align: center; 
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 128, 128, 0.2);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.confirm-btn:hover:not(:disabled) { 
+  background: #005a5a; 
+}
+
+/* 🔒 Estado visual deshabilitado */
+.confirm-btn:disabled {
+  background-color: #ccc !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   💻 RESPONSIVE: Adaptación para Tablets y Computadoras
+   ========================================================================== */
+@media (min-width: 768px) {
+  .delivery-container { 
+    max-width: 600px; 
+    margin: 2rem auto; /* Ajuste estético de márgenes en PC */
+    border-left: 1px solid #eee; 
+    border-right: 1px solid #eee; 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+}

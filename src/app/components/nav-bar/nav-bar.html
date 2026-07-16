@@ -1,0 +1,26 @@
+<header class="navbar">
+  <div class="nav-top">
+    <button class="hamburger-btn" (click)="toggleMenu()">☰</button>
+    
+    <div class="logo">
+      <div class="logo-text">
+        <h1>Tejiendo Sueños</h1>
+      </div>
+    </div>
+  
+    <nav class="nav-links" [class.open]="isMenuOpen">
+      <a routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" (click)="toggleMenu()">Inicio</a>
+      <a routerLink="/categorias" routerLinkActive="active" (click)="toggleMenu()">Categorías</a>
+      <a routerLink="/seguimiento" routerLinkActive="active" (click)="toggleMenu()">Seguimiento</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn mobile-only">🔍</button>
+      
+      <a routerLink="/carrito" class="icon-btn cart-link" style="text-decoration:none">
+        🛒
+        <span *ngIf="totalItems > 0" class="cart-counter">{{ totalItems }}</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,130 @@
+<div class="seguimiento-page">
+  <div class="search-container">
+    <h2>🔍 Seguimiento de Pedidos</h2>
+    <p>Ingresa el código de tracking de tu pedido para conocer su estado en tiempo real.</p>
+    
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="idPedido" 
+        placeholder="Ej: ORD-260710-171657" 
+        (keyup.enter)="buscarPedido()"
+      />
+      <button (click)="buscarPedido()">Buscar</button>
+    </div>
+    
+    <p *ngIf="errorMensaje" class="error-text">{{ errorMensaje }}</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-box">
+    <div class="spinner"></div>
+    <p>Consultando al servidor...</p>
+  </div>
+
+  <div *ngIf="pedidoSeleccionado && !loading" class="card-seguimiento">
+    <div class="card-header">
+      <h3>Pedido #{{ pedidoSeleccionado.orderNumber }}</h3>
+      <span class="status-badge" [class]="pedidoSeleccionado.status">
+        {{ getStatusText(pedidoSeleccionado.status) }}
+      </span>
+    </div>
+
+    <p class="cliente-info">Cliente: <strong>{{ pedidoSeleccionado.customerName }} {{ pedidoSeleccionado.customerLastName }}</strong></p>
+
+    <div class="stepper-wrapper">
+      <div class="progress-bar-line">
+        <div class="progress-fill" [style.width.%]="(getStatusStep(pedidoSeleccionado.status) - 1) * 20"></div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 1" 
+           [class.active]="pedidoSeleccionado.status === 'pending'">
+        <div class="step-icon">📌</div>
+        <div class="step-content-mobile">
+          <div class="step-label">Pendiente</div>
+          <div class="step-date">{{ getStatusDate('pending') }}</div>
+        </div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 2" 
+           [class.active]="pedidoSeleccionado.status === 'confirmed'">
+        <div class="step-icon">🤝</div>
+        <div class="step-content-mobile">
+          <div class="step-label">Confirmado</div>
+          <div class="step-date">{{ getStatusDate('confirmed') }}</div>
+        </div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 3" 
+           [class.active]="pedidoSeleccionado.status === 'preparing'">
+        <div class="step-icon animation-wool">🧶</div>
+        <div class="step-content-mobile">
+          <div class="step-label">En Preparación</div>
+          <div class="step-date">{{ getStatusDate('preparing') }}</div>
+        </div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 4" 
+           [class.active]="pedidoSeleccionado.status === 'ready'">
+        <div class="step-icon">🎁</div>
+        <div class="step-content-mobile">
+          <div class="step-label">Listo</div>
+          <div class="step-date">{{ getStatusDate('ready') }}</div>
+        </div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 5" 
+           [class.active]="pedidoSeleccionado.status === 'out_for_delivery'">
+        <div class="step-icon">🛵</div>
+        <div class="step-content-mobile">
+          <div class="step-label">
+            {{ pedidoSeleccionado.deliveryMode === 'delivery' ? 'En Reparto' : 'Para Retirar' }}
+          </div>
+          <div class="step-date">{{ getStatusDate('out_for_delivery') }}</div>
+        </div>
+      </div>
+
+      <div class="step-item" 
+           [class.completed]="getStatusStep(pedidoSeleccionado.status) >= 6" 
+           [class.active]="pedidoSeleccionado.status === 'completed'">
+        <div class="step-icon">✅</div>
+        <div class="step-content-mobile">
+          <div class="step-label">Completado</div>
+          <div class="step-date">{{ getStatusDate('completed') }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="pedidoSeleccionado.status === 'cancelled'" class="alert-reason cancelled-box">
+      ❌ <strong>Pedido Cancelado:</strong> {{ pedidoSeleccionado.cancellationReason || 'No especificado' }}
+    </div>
+    <div *ngIf="pedidoSeleccionado.status === 'rejected'" class="alert-reason rejected-box">
+      ⚠️ <strong>Pedido Rechazado por el comercio:</strong> {{ pedidoSeleccionado.rejectionReason || 'No especificado' }}
+    </div>
+
+    <hr class="separator" />
+
+    <div class="resumen-mini">
+      <div class="resumen-row">
+        <span><strong>Modo de Entrega:</strong></span>
+        <span>{{ pedidoSeleccionado.deliveryMode === 'delivery' ? 'Envío a domicilio 📦' : (pedidoSeleccionado.deliveryMode === 'dine_in' ? 'Punto de encuentro 📍' : 'Retiro en el local 🏪') }}</span>
+      </div>
+      <div *ngIf="pedidoSeleccionado.deliveryAddress" class="resumen-row">
+        <span><strong>Dirección / Lugar:</strong></span>
+        <span>{{ pedidoSeleccionado.deliveryAddress }}</span>
+      </div>
+      <div *ngIf="pedidoSeleccionado.notes" class="resumen-row">
+        <span><strong>Notas:</strong></span>
+        <span><em>"{{ pedidoSeleccionado.notes }}"</em></span>
+      </div>
+      <div class="resumen-row total-row">
+        <span><strong>Total Abonado:</strong></span>
+        <span class="total-price">${{ pedidoSeleccionado.total }}</span>
+      </div>
+    </div>
+  </div>
+</div>

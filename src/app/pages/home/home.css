@@ -1,0 +1,204 @@
+/* ==========================================================================
+   📱 ESTILOS BASE: Diseñado para celulares (Mobile-First)
+   ========================================================================== */
+
+.home-container {
+  padding: 1rem 4%;
+  box-sizing: border-box;
+}
+
+/* --- CARRUSEL ADAPTABLE --- */
+.carousel-section {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* El contenedor se adapta al ancho del celular en formato cuadrado */
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;    /* Mantiene la proporción cuadrada perfecta sin desbordar */
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+/* La imagen es 100% fluida en el teléfono */
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Controles compactos y táctiles para celular */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control.prev { left: 8px; }
+.carousel-control.next { right: 8px; }
+
+.carousel-control:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.banner-mock {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* --- SECCIONES Y TEXTOS --- */
+.products-section {
+  padding: 25px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.products-section h2, .categories-section h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+/* Grilla fluida de 1 columna para productos en celular */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 15px;
+  margin-top: 15px;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+
+/* Categorías centradas de a 2 columnas en celular */
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 20px 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-items: center;
+}
+
+.category-item { 
+  text-align: center; 
+  cursor: pointer; 
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.emoji-icon { font-size: 1.8rem; }
+.category-item h3 { font-size: 0.75rem; margin-top: 8px; color: #444; }
+
+.view-more-btn {
+  background: #008080; 
+  color: white; 
+  border: none;
+  padding: 12px 25px; 
+  border-radius: 25px; 
+  font-weight: bold; 
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   💻 RESPONSIVE: Adaptación para Tablets y Computadoras
+   ========================================================================== */
+@media (min-width: 768px) {
+  
+  .home-container {
+    padding: 2rem 5%;
+  }
+
+  .carousel-section {
+    margin: 20px auto;
+  }
+
+  /* Recupera las medidas estables y el diseño centrado en PC */
+  .carousel-slide {
+    width: 600px;
+    height: 600px;
+    aspect-ratio: auto;
+  }
+
+  .carousel-image {
+    width: 600px;
+    height: 600px;
+  }
+
+  .carousel-control { 
+    width: 40px; 
+    height: 40px; 
+    font-size: 24px; 
+  }
+  .carousel-control.prev { left: 10px; }
+  .carousel-control.next { right: 10px; }
+
+  .products-section {
+    padding: 40px 20px;
+  }
+
+  .products-section h2, .categories-section h2 { 
+    font-size: 1.8rem; 
+  }
+
+  /* Grilla auto-ajustable en PC: acomoda tarjetas de 250px según quepan */
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 3rem;
+  }
+
+  /* Las burbujas de categorías se abren en una sola fila horizontal */
+  .categories-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+  }
+
+  .icon-circle { width: 110px; height: 110px; }
+  .emoji-icon { font-size: 2.5rem; }
+  .category-item h3 { font-size: 0.85rem; }
+}
