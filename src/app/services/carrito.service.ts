@@ -20,7 +20,7 @@ export class CarritoService {
     notes: ''
   };
 
-  private apiUrl = 'http://localhost:3000/orders';
+  private apiUrl: 'https://back-end-amigurumipage-1.onrender.com';
 
   constructor(private http: HttpClient) { }
 
